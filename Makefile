@@ -3,7 +3,7 @@ BIB = bibtex
 DOCKERIMAGE = antiemes/latex
 
 
-MAINDOCUMENT = thesis
+MAINDOCUMENT = slides
 BIBFILE = references.bib
 FIGURES = $(shell find *.eps *.png *.jpg)
 
@@ -11,9 +11,6 @@ FIGURES = $(shell find *.eps *.png *.jpg)
 all: $(MAINDOCUMENT).tex $(FIGURES)
 	$(TEX) $(MAINDOCUMENT)
 	$(TEX) $(MAINDOCUMENT)
-	convert -density 300 cover.pdf -quality 98 cover_as_img.pdf
-	pdftk $(MAINDOCUMENT).pdf cat 2-end output $(MAINDOCUMENT)-2-.pdf
-	pdftk cover_as_img.pdf $(MAINDOCUMENT)-2-.pdf cat output $(MAINDOCUMENT)-with-cover.pdf
 
 spell::
 	ispell *.tex
