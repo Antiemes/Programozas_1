@@ -1,0 +1,216 @@
+\documentclass[a4paper,12pt,oneside]{report}
+\usepackage[magyar]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\def\magyarOptions{defaults=hu-min}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage[dvipsnames]{xcolor}
+%\usepackage{booktabs}
+\usepackage{tabularray}
+\usepackage{listings}
+\lstset
+{
+	framexleftmargin=10mm,
+	frame=shadowbox,
+	rulesepcolor=\color{olive8},
+	language=C,
+	numbers=left,
+	stepnumber=1,
+	showstringspaces=false,
+	tabsize=4,
+	breaklines=true,
+	breakatwhitespace=false,
+	basicstyle=\footnotesize\ttfamily
+}
+\frenchspacing
+\linespread{1.25}
+\UseTblrLibrary{booktabs}
+\usepackage[left=2.5cm,top=4cm,right=2.5cm,bottom=4.5cm,headsep=2cm]{geometry}
+
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+
+\usepackage{fancyhdr}
+
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead[]{}
+\fancyhead[C]{\thepage}
+\fancyfoot[]{}
+\fancyfoot[]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\chapter}[hang]{\normalsize\bfseries}{\color{Black}\thechapter .\hspace{10pt}}{0pt}{\normalsize\bfseries\color{Black}\MakeUppercase}
+
+\titleformat{\section}[hang]{\normalsize\bfseries}{\hspace{0pt} \thesection .\hspace{10pt}}{0pt}{\normalsize\bfseries\MakeUppercase}
+
+\titleformat{\subsection}[hang]{\normalsize\bfseries}{\hspace{0pt} \thesubsection .\hspace{10pt}}{0pt}{\normalsize\bfseries}
+
+\title{Szakdolgozat}
+
+\author{Példa József}
+
+\date{}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Bevezetés}
+
+Az egyszerű szöveget normál módon írjuk. Bárhova tehetünk sortörést,
+az független lesz a pdf-ben levő sortöréstől.
+Sőt
+akár
+írhatunk
+minden
+szót
+külön
+sorba
+is.
+
+A bekezdéseket között legalább egy üres sor választja el. A több üres
+bekezdés nem eredményez nagyobb kihagyást.
+
+Tudunk beszúrni felsorolást is, a következő módon:
+
+\begin{itemize}
+
+	\item{Első bullet point}
+
+	\item{Második bullet point}
+
+	\item{Végül a harmadik}
+
+\end{itemize}
+
+És kódot is. Ilyenkor a LaTeX szépen sorszámozza nekünk, és egy keretet is tesz.
+(A sorszámozás, a keret, a behúzás stb. beállítható.)
+
+%Ez egy kis térköz
+\medskip
+
+%Így tudunk kódot beszúrni
+\begin{lstlisting}
+#include <stdio.h>
+int main()
+{
+	// printf() displays the string inside quotation
+	printf("Hello, World!");
+	return 0;
+}
+\end{lstlisting}
+
+\medskip
+
+Ez pedig itt egy táblázat.
+
+\begin{center}
+\begin{booktabs}{colspec={ccc},row{even}={olive9}}
+\toprule
+{Ablakméret} &
+	Futási idő ($\mu s$) &
+	RAM mérete (bájt) \\
+\midrule
+8 &  16 & 228 \\
+12 & 52 & 236 \\
+16 & 24  & 244 \\
+24 & 64  & 260 \\
+32 & 36  & 276 \\
+64 & 64  & 340 \\
+128 & 120  & 468 \\
+256 &  228 & 724 \\
+512 &  464 & 1236 \\
+\bottomrule
+\end{booktabs}
+\end{center}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dictum
+sollicitudin augue, non gravida tortor suscipit et. Curabitur ac quam est.
+Donec maximus nisl dolor, non condimentum nibh pretium eget. Cras sagittis, dui
+quis aliquam placerat, sapien risus cursus arcu, at blandit nisi nisl at magna.
+Cras sagittis viverra augue id scelerisque. Mauris finibus consectetur augue,
+sit amet consequat velit egestas at. Mauris vitae ipsum placerat dui lobortis
+iaculis. Etiam suscipit pellentesque metus eu posuere. Sed consequat varius
+auctor.
+
+Az ábrák ,,lebegő ábrák'', ami azt jelenti, hogy nem feltétlenül pontosan
+oda kerülnek, ahova a .tex fájlban helyezzük őket, de a LaTeX mindig igyekszik
+jól elhelyezni azokat. Minden ábrának van egy címkéje, amit így tudunk használni:
+\Aref{fig-example} ábrán egy példa látható.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.35\textwidth]{fig/example.png}
+	\caption{Ez egy példa ábra. Minden ábrához kell képaláírás.}
+	\label{fig-example}
+\end{figure}
+
+\chapter{Követelmény specifikáció}
+
+Donec congue mattis velit sit amet consectetur. Class aptent taciti sociosqu ad
+litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque
+habitant morbi tristique senectus et netus et malesuada fames ac turpis
+egestas. Morbi porttitor tortor nisl. Aenean sit amet leo sit amet purus
+bibendum ullamcorper. Proin fermentum mollis urna, eu bibendum est faucibus a.
+Maecenas molestie, eros egestas vehicula ultrices, felis sapien sollicitudin
+eros, a vulputate tortor tortor at elit. Aliquam sit amet tristique mauris, non
+volutpat ipsum. Curabitur mattis mi sed condimentum laoreet. Cras finibus lacus
+a massa aliquam, at ultrices lorem elementum.
+
+
+\chapter{Rendszerterv}
+
+\section{Azon belül egy alfejezet}
+
+Nam volutpat odio et tortor mattis pharetra. Aliquam id bibendum nibh, in
+
+\subsection{Még egy szinttel beljebb}
+
+quam ut malesuada. Praesent elementum, ante ut accumsan mollis, nisi urna
+
+\section{Újabb alfejezet}
+
+dictum ligula. Cras condimentum enim nec porta molestie. Sed vel luctus elit.
+Fusce malesuada risus ex, eu molestie lorem fermentum in. Nullam malesuada ac
+accumsan mi, nec iaculis metus dui congue metus. Nullam id justo metus.
+Suspendisse a porttitor nunc. Proin risus tortor, gravida nec dui in, tristique
+mattis urna. Pellentesque rhoncus auctor leo, vel dapibus leo dictum quis.
+Phasellus tristique semper odio at bibendum. Quisque imperdiet feugiat enim id
+sodales. Morbi id metus mi. Phasellus ornare malesuada turpis id luctus.
+Vestibulum et efficitur tellus, a lacinia urna.
+
+Maecenas ipsum orci, varius non ultricies nec, dignissim eu arcu. Maecenas
+molestie rhoncus metus vel elementum. Aliquam erat volutpat. Proin lacinia ante
+a lacus pharetra, a faucibus metus dictum. Interdum et malesuada fames ac ante
+ipsum primis in faucibus. Vestibulum ante ipsum primis in faucibus orci luctus
+et ultrices posuere cubilia curae; Etiam sit amet malesuada augue. Duis vel ex
+suscipit, blandit purus et, pharetra leo. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+
+Pellentesque malesuada sagittis congue. Phasellus magna nibh, eleifend eget
+augue in, pretium iaculis tellus. Morbi volutpat vehicula quam, pharetra
+ultrices urna vulputate quis. Integer id molestie lacus, vel malesuada nisi.
+Cras nec dui a enim facilisis consectetur. Orci varius natoque penatibus et
+magnis dis parturient montes, nascetur ridiculus mus. Phasellus facilisis ante
+ac porta fermentum. Phasellus ultrices, dolor nec suscipit feugiat, enim orci
+efficitur tortor, at tristique felis nibh vitae sem. Maecenas lobortis
+dignissim turpis, vel condimentum felis tempus nec. Fusce imperdiet ornare
+felis.
+
+\chapter{Megvalósítás}
+
+
+\chapter{Összefoglalás}
+
+
+\end{document}
