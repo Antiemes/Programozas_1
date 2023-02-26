@@ -14,4 +14,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Final document
-          path: *.pdf
+          path: 01_bevezetes.pdf
