@@ -225,6 +225,49 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Hétköznapi algoritmusok}
+
+  Mákos tészta receptje
+
+  \begin{itemize}
+    \item{Egy edényben forraljunk vizet}
+    \item{Tegyük bele a tésztát}
+    \item{Várjunk, amíg a tészta megfő}
+    \item{Szűrjük le a tésztát}
+    \item{Keverjük össze a mákot a cukorral}
+    \item{Tegyünk egy adag főtt tésztát egy tányérba}
+    \item{Szórjuk meg a tányérban levő tésztát cukros mákkal}
+  \end{itemize}
+
+  Ez algoritmus-e? \emph{Attól függ, hogy ki számára.}
+
+  Mi az algoritmus bemenete? Mi a kimenete? \emph{Bemenet: alapanyagok, kimenet: kész étel}
+
+  Az algoritmus egyes lépései kisebb lépésekre bonthatóak (\emph{dekompozíció}). Addig kell finomítani
+  a lépéseket, amíg a lépések egyértelműen értelmezhetővé válnak.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Egy lépés felbontása}
+
+  Egy edényben forraljunk vizet!
+
+  \begin{enumerate}
+    \item{A szükséges víz térfogata: $v_{viz}$}
+    \item{A minimális edénytérfogat kiszámítása: $v_{min} = 1.2 \cdot v_{viz}$}
+    \item{A maximális edényméret kiszámítása: $v_{max} = 2 \cdot v_{viz}$}
+    \item{Vegyük a következő edényt}
+    \item{Ha nincs már több edény, az algoritmus leáll}
+    \item{Legyen az aktuális edény térfogata $v_{edeny}$}
+    \item{Ha $v_{edeny} \geq v_{min}$ és $v_{edeny} \leq v_{max}$, akkor menjünk a TOOD pontra, egyébként a TODO pontra}
+    \item{Engedjünk az edénybe $v_{viz}$ mennyiségű vizet}
+    \item{Tegyük az edényt a tűzhelyre}
+    \item{Kapcsoljuk be a tűzhelyet}
+    \item{Várjunk, amíg felforr a víz}
+  \end{enumerate}
+
+  Az algoritmusok egyes lépéseire később újra visszatérhetünk.
 \end{frame}
 
 %\begin{frame}
