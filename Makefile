@@ -3,7 +3,7 @@ BIB = bibtex
 DOCKERIMAGE = antiemes/latex
 
 
-MAINDOCUMENT = slides
+MAINDOCUMENT = $(shell find -name "*.tex" | sed 's,.tex,,')
 BIBFILE = references.bib
 FIGURES = $(shell find *.eps *.png *.jpg)
 
