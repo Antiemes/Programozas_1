@@ -24,8 +24,30 @@ Térkép beolvasása
 Térkép megjelenítése
 
 Útkereső algoritmus
+  - Végigmegyünk minden ponton
+    Ha a szomszédon át rövidebb az út,
+    akkor az aktuális távolság = szomszéd távolsága + 1
+    
+    ...
+    0..
+    ...
+    
+    1..
+    012
+    123
+    
+    123
+    012
+    123
+    
+    Akkor áll meg, ha nem tud több frissítést végezni
 
 Váz
+  beolvasás
+  
+  isméltelve
+    - keresés
+    - megjelenítés
 
 *******************************************************************************/
 #include <stdio.h>
@@ -92,6 +114,52 @@ int terkep_beolvas(char* filenev, int terkep[TERKEP_MAGASSAG][TERKEP_SZELESSEG])
   return 0;
 }
 
+int tavolsag(int terkep[TERKEP_MAGASSAG][TERKEP_SZELESSEG], int x, int y)
+{
+  if (x < 0 || x >= TERKEP_SZELESSEG || y < 0 || y >= TERKEP_MAGASSAG)
+  {
+    return -2;
+  }
+  else
+  {
+    return terkep[y][x];
+  }
+}
+
+int szomszed_fele_frissit(int terkep[TERKEP_MAGASSAG][TERKEP_SZELESSEG], int x, int y, int x_sz, int y_sz)
+{
+  int eredeti = terkep[y][x];
+  int szomszed_tav;
+  
+  if ((szomszed_tav = tavolsag(terkep, x_sz, y_sz)) >= 0)
+  {
+    if (szomszed_tav + 1 < eredeti)
+    {
+      terkep[y][x] = szomszed_tav + 1;
+      return 1;
+    }
+  }
+  return 0;
+}
+
+int terkep_keres(int terkep[TERKEP_MAGASSAG][TERKEP_SZELESSEG])
+{
+  int x, y;
+  int cserek = 0;
+
+  for (y=0; y<TERKEP_MAGASSAG; y++)
+  {
+    for (x=0; x<TERKEP_SZELESSEG; x++)
+    {
+      cserek += szomszed_fele_frissit(terkep, x, y, x+1, y);
+      cserek += szomszed_fele_frissit(terkep, x, y, x-1, y);
+      cserek += szomszed_fele_frissit(terkep, x, y, x, y-1);
+      cserek += szomszed_fele_frissit(terkep, x, y, x, y+1);
+    }
+  }
+  return cserek;
+}
+
 int main()
 {
   int terkep[TERKEP_MAGASSAG][TERKEP_SZELESSEG];
@@ -108,7 +176,6 @@ int main()
   }
 
   terkep_beolvas(TERKEP_FILE, terkep);
-  
 
   terkep_kirajzol(terkep);
 
