@@ -1,0 +1,3 @@
+Kis Peter 3 3 5
+Nagy Istvan 4 2 2
+Kovacs Zsolt 4 3 2
